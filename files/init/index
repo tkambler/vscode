@@ -1,0 +1,7 @@
+#!/usr/bin/env node
+
+console.log('Init complete.');
+
+setTimeout(() => {
+    // Do nothing. Prevent supervisord from thinking this script didn't finish starting up.
+}, 10000);
