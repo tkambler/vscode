@@ -16,3 +16,7 @@ Clone and run:
 ## Starting a Container
 
     docker run -p "127.0.0.1:8443:8443" --rm tkambler/code-server:latest
+
+### Mounting a Folder into the Workspace
+
+    docker run -p "127.0.0.1:8443:8443" --rm -v $(pwd):/home/coder/project tkambler/code-server:latest
