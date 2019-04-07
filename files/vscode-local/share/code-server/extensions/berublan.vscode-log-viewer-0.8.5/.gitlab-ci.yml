@@ -1,0 +1,11 @@
+image: node:latest
+
+cache:
+  paths:
+    - node_modules/    
+
+test:
+  script:
+    - yarn install
+    - yarn run build
+    - yarn run test:vscodefree

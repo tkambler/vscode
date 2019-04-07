@@ -89,7 +89,7 @@ RUN npm i -g jake grunt-cli gulp lerna
 
 RUN rm -rf /home/coder/project
 
-COPY files/local /home/coder/.local
+COPY files/vscode-local /home/coder/.local
 RUN chown -R coder:coder /home/coder/.local
 
 ENTRYPOINT ["dumb-init", "supervisord"]

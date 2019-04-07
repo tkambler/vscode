@@ -1,0 +1,258 @@
+{
+	"name": "vscode-log-viewer",
+	"displayName": "Log Viewer",
+	"description": "Monitors text log files",
+	"version": "0.8.5",
+	"publisher": "berublan",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://gitlab.com/berublan/vscode-log-viewer"
+	},
+	"engines": {
+		"vscode": "^1.22.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"keywords": [
+		"logging",
+		"log viewer",
+		"log monitor",
+		"tail"
+	],
+	"icon": "images/logo.png",
+	"activationEvents": [
+		"onView:logExplorer"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"views": {
+			"log-viewer": [
+				{
+					"id": "logExplorer",
+					"name": "Watches"
+				}
+			]
+		},
+		"menus": {
+			"view/title": [
+				{
+					"command": "logviewer.unwatchAll",
+					"when": "view == logExplorer",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "logviewer.unwatchLogResource",
+					"when": "viewItem == watching"
+				}
+			]
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "log-viewer",
+					"title": "Log Viewer",
+					"icon": "images/baseline-broken_image-24px.svg"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "logviewer.toggleFollowTail",
+				"title": "Toggle follow tail"
+			},
+			{
+				"command": "logviewer.clearLogView",
+				"title": "Clear log view"
+			},
+			{
+				"command": "logviewer.resetLogView",
+				"title": "Reset log view"
+			},
+			{
+				"command": "logviewer.unwatchAll",
+				"title": "Unwatch all"
+			},
+			{
+				"command": "logviewer.unwatchLogResource",
+				"title": "Stop watching"
+			},
+			{
+				"command": "logviewer.openCurrentFile",
+				"title": "Open current log file"
+			},
+			{
+				"command": "logviewer.openLastChanged",
+				"title": "Open the last changed watch"
+			}
+		],
+		"configuration": {
+			"title": "Log Viewer Configuration",
+			"type": "object",
+			"properties": {
+				"logViewer.watch": {
+					"type": "array",
+					"items": {
+						"anyOf": [
+							{
+								"description": "Glob pattern.",
+								"type": "string"
+							},
+							{
+								"type": "object",
+								"properties": {
+									"title": {
+										"description": "Text to use in the explorer view and for the tab name.",
+										"type": "string"
+									},
+									"pattern": {
+										"description": "Glob pattern.",
+										"type": "string"
+									},
+									"workspaceName": {
+										"description": "When in a multi-root workspace, which workspace should be used to resolve relative patterns.",
+										"type": "string"
+									},
+									"options": {
+										"type": "object",
+										"description": "logViewer.options for this watch.",
+										"properties": {
+											"fileCheckInterval": {
+												"type": "number",
+												"default": 500,
+												"description": "Interval in ms to check for changes in current file."
+											},
+											"fileListInterval": {
+												"type": "number",
+												"default": 2000,
+												"description": "Interval in ms to search for new files."
+											},
+											"ignorePattern": {
+												"type": "string",
+												"description": "This pattern is matched against each segment in the path. Each directory and the file.",
+												"default": "(node_modules|.git)"
+											},
+											"encoding": {
+												"type": "string",
+												"description": "Encoding to use when reading the files. (https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings),",
+												"default": "utf8",
+												"enum": [
+													"utf8",
+													"ascii",
+													"ucs2",
+													"utf16le",
+													"latin1"
+												]
+											}
+										}
+									}
+								},
+								"required": [
+									"pattern"
+								]
+							}
+						]
+					},
+					"default": [],
+					"description": "Glob patterns of files to watch."
+				},
+				"logViewer.options": {
+					"type": "object",
+					"properties": {
+						"fileCheckInterval": {
+							"type": "number",
+							"default": 500,
+							"description": "Interval in ms to check for changes in current file."
+						},
+						"fileListInterval": {
+							"type": "number",
+							"default": 2000,
+							"description": "Interval in ms to search for new files."
+						},
+						"ignorePattern": {
+							"type": "string",
+							"description": "This pattern is matched against each segment in the path. Each directory and the file.",
+							"default": "(node_modules|.git)"
+						},
+						"encoding": {
+							"type": "string",
+							"description": "Encoding to use when reading the files. (https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings).",
+							"default": "utf8",
+							"enum": [
+								"utf8",
+								"ascii",
+								"ucs2",
+								"utf16le",
+								"latin1"
+							]
+						}
+					}
+				},
+				"logViewer.windows.allowBackslashAsPathSeparator": {
+					"type": "boolean",
+					"default": true,
+					"description": "Allow to use \"\\\" (as well as \"/\") as a path separator on windows. Won't be able to escape certain pattern characters when enabled."
+				},
+				"logViewer.showStatusBarItemOnChange": {
+					"type": "boolean",
+					"default": false,
+					"description": "Show an item in the status bar when a watched pattern changes, to quickly access it."
+				}
+			}
+		},
+		"languages": [
+			{
+				"id": "log-viewer",
+				"aliases": [
+					"Log file"
+				],
+				"extensions": [
+					".log-viewer"
+				],
+				"mimetypes": [
+					"log",
+					"text/log",
+					"text/x-log",
+					"text/x-code-output",
+					"x-code-output"
+				]
+			}
+		],
+		"grammars": [
+			{
+				"language": "log-viewer",
+				"scopeName": "text.log.log-viewer",
+				"path": "./syntaxes/log-syntax.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "tsc -p ./",
+		"build": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test",
+		"test:vscodefree": "mocha --ui tdd out/test/requireMock.js out/test/vscodefree/**/*.test.js"
+	},
+	"dependencies": {
+		"fs-extra": "^7.0.1",
+		"micromatch": "^3.1.10"
+	},
+	"devDependencies": {
+		"@types/fs-extra": "^5.0.4",
+		"@types/micromatch": "^3.1.0",
+		"@types/mocha": "^5.2.5",
+		"@types/node": "10.*",
+		"mocha": "^5.2.0",
+		"typescript": "^3.2.1",
+		"vscode": "^1.1.22"
+	},
+	"__metadata": {
+		"id": "063b41ed-e525-444c-b347-798851c8e5de",
+		"publisherId": "44afcfaf-f6af-41de-85eb-60d25d566651",
+		"publisherDisplayName": "Bernardo"
+	}
+}
