@@ -2,7 +2,7 @@
 
 This Docker image extends upon the base image provided by [coder.com](https://coder.com/). It includes a number of applications, utilities, and VSCode extensions that I find myself frequently using. Fork and alter as needed.
 
-Comes with the following applications / libraries pre-installed on Ubuntu 18.04.1 LTS:
+It comes with the following applications / libraries pre-installed on Ubuntu 18.04.1 LTS:
 
 - [Node 10.15.3](https://nodejs.org/en/)
 - [npm@latest](https://www.npmjs.com)
