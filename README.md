@@ -4,7 +4,7 @@ This Docker image extends upon the base image provided by [coder.com](https://co
 
 Comes with the following applications / libraries pre-installed on Ubuntu 18.04.1 LTS:
 
-- [https://nodejs.org/en/](Node 10.15.3)
+- [Node 10.15.3](https://nodejs.org/en/)
 - [npm@latest](https://www.npmjs.com)
 - [webdiff](https://github.com/danvk/webdiff)
 - [gitcheck](https://github.com/badele/gitcheck)
