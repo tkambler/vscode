@@ -4,31 +4,31 @@ This Docker image extends upon the base image provided by [coder.com](https://co
 
 Comes with the following applications / libraries pre-installed on Ubuntu 18.04.1 LTS:
 
-    - [https://nodejs.org/en/](Node 10.15.3)
-    - [npm@latest](https://www.npmjs.com)
-    - [webdiff](https://github.com/danvk/webdiff)
-    - [gitcheck](https://github.com/badele/gitcheck)
-    - [GraphicsMagick](http://www.graphicsmagick.org/)
-    - [git](https://git-scm.com)
-    - [htop](https://hisham.hm/htop/)
-    - [Python 2.7.15](https://www.python.org)
-    - [PHP 7.1](https://www.php.net)
-    - [Composer 1.8.4](https://getcomposer.org)
-    - [Docker](https://www.docker.com)
-    - [MySQL Client](https://www.mysql.com)
+- [https://nodejs.org/en/](Node 10.15.3)
+- [npm@latest](https://www.npmjs.com)
+- [webdiff](https://github.com/danvk/webdiff)
+- [gitcheck](https://github.com/badele/gitcheck)
+- [GraphicsMagick](http://www.graphicsmagick.org/)
+- [git](https://git-scm.com)
+- [htop](https://hisham.hm/htop/)
+- [Python 2.7.15](https://www.python.org)
+- [PHP 7.1](https://www.php.net)
+- [Composer 1.8.4](https://getcomposer.org)
+- [Docker](https://www.docker.com)
+- [MySQL Client](https://www.mysql.com)
 
 Comes pre-configured with the following extensions:
 
-    - Docker
-    - GitLens
-    - Log Viewer
-    - .editorconfig
-    - Prettier
-    - npm
-    - PHP debugger
-    - GraphQL for VSCode
-    - YAML
-    - VSCode Icons / Material Theme
+  - Docker
+  - GitLens
+  - Log Viewer
+  - .editorconfig
+  - Prettier
+  - npm
+  - PHP debugger
+  - GraphQL for VSCode
+  - YAML
+  - VSCode Icons / Material Theme
 
 ## Building the Image
 
