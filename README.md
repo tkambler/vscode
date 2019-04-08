@@ -1,6 +1,6 @@
 # VSCode
 
-This Docker image extends upon the base image provided by [coder.com](https://coder.com/). It includes a number of applications, utilities, and VSCode extensions that I find myself frequently using. Fork and alter as needed.
+This Docker image extends the base image provided by [coder.com](https://coder.com/). It includes a number of applications, utilities, and VSCode extensions that I find myself frequently using. Fork and alter as needed.
 
 It comes with the following applications / libraries pre-installed on Ubuntu 18.04.1 LTS:
 
@@ -29,6 +29,10 @@ Comes pre-configured with the following extensions:
   - GraphQL for VSCode
   - YAML
   - VSCode Icons / Material Theme
+
+## Quick Start
+
+    docker run -p "127.0.0.1:8443:8443" --rm tkambler/code-server:latest
 
 ## Building the Image
 
