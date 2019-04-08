@@ -1,6 +1,6 @@
 # VSCode
 
-This Docker image extends the base image provided by [coder.com](https://coder.com/). It includes a number of applications, utilities, and VSCode extensions that I find myself frequently using. Fork and alter as needed.
+This Docker image extends the base image provided by [coder.com](https://coder.com/). It includes a number of applications, utilities, and [VSCode](https://code.visualstudio.com/) extensions that I find myself frequently using. Fork and alter as needed.
 
 It comes with the following applications / libraries pre-installed on Ubuntu 18.04.1 LTS:
 
@@ -17,7 +17,7 @@ It comes with the following applications / libraries pre-installed on Ubuntu 18.
 - [Docker](https://www.docker.com)
 - [MySQL Client](https://www.mysql.com)
 
-Comes pre-configured with the following extensions:
+VSCode has been pre-configured with the following extensions:
 
   - Docker
   - GitLens
